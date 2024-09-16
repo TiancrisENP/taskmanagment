@@ -1,0 +1,225 @@
+/* General styling */
+body {
+  position: relative; /* Asegúrate de que el body tenga posición relativa para que el pseudo-elemento se posicione correctamente */
+  background: linear-gradient(to bottom right, #847e89, #6f6b75); /* Gradiente en tonos pastel oscuros */
+  color: #333333;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./wallpaper.jpeg');
+  background-position: center;
+  opacity: 0.75; /* Ajusta la opacidad de la imagen */
+  z-index: -1; /* Asegúrate de que el pseudo-elemento esté detrás del contenido */
+}
+
+/* Form container */
+form {
+  background-color: #4b494e; /* Fondo gris oscuro pastel */
+  padding: 25px;
+  border-radius: 25px; /* Bordes más curvos */
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Input and button styling */
+input, select, textarea, button {
+  color: #e0e0e0; /* Texto en gris claro */
+  background-color: #56545b; /* Fondo gris pastel oscuro */
+  border: 2px solid #9d89a8; /* Borde en tono pastel púrpura oscuro */
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 15px; /* Bordes más curvos */
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); /* Sombras más suaves */
+  width: 100%;
+  align-items: center;
+  text-align: center; /* Centrar texto en los inputs */
+}
+
+input::placeholder, textarea::placeholder {
+  color: #b0a9b3; /* Color pastel para los placeholders */
+  text-align: center; /* Centrar texto de los placeholders */
+}
+
+button {
+  background-color: #8d6a9f; /* Botón en tono pastel púrpura oscuro */
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Transición suave en el hover */
+  text-align: center; /* Centrar texto del botón */
+}
+
+button:hover {
+  background-color: #7a5b8d; /* Color de hover en tono púrpura más oscuro */
+}
+
+button:active {
+  transform: scale(0.98); /* Pequeño efecto de escala al hacer clic */
+}
+
+h1, label {
+  text-align: center; /* Centrar texto de h1 y labels */
+  color: #e0e0e0; /* Texto en gris claro */
+  font-family: 'Bahnschrift', sans-serif;
+  margin-bottom: 10px; /* Espacio entre h1 y labels */
+}
+
+/* Container for tasks */
+.task-list {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las tareas se ajusten en varias filas */
+  justify-content: space-between; /* Espacio entre tareas */
+  gap: 15px; /* Espacio entre las tareas */
+  max-width: 100%;
+}
+
+/* Styling for each task item */
+.task-item {
+  position: relative; /* Para permitir el posicionamiento absoluto del botón de eliminar y la imagen de checkmark */
+  flex: 1 1 calc(33.333% - 30px); /* Tres tareas por fila con márgenes */
+  border: 2px solid #9d89a8;
+  border-radius: 20px; /* Bordes más redondeados */
+  padding: 20px;
+  background-color: #4b494e; /* Fondo gris oscuro pastel */
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  margin: 15px 0;
+  min-width: 200px; /* Establece un ancho mínimo para mantener el diseño */
+  overflow: hidden; /* Asegura que el fondo no se salga del contenedor */
+}
+
+/* Small "x" button in the top-right corner */
+.task-item .delete-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  color: #e0e0e0;
+  font-size: 16px; /* Tamaño pequeño para el botón de eliminar */
+  cursor: pointer;
+  z-index: 1;
+}
+
+/* Add checkmark image for completed tasks */
+.task-item.completed {
+  background: #4b494e; /* Mantén el color de fondo cuando esté completado */
+  background-image: url('./vecteezy_check-mark-icon-sign-symbol-design_10159940.png');
+  background-size: cover; /* Cubrir toda el área del task-item */
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Ensure text color is visible over the background */
+.task-item p {
+  margin: 10px 0;
+  color: #e0e0e0; /* Color de texto para mejor visibilidad */
+  font-family: 'Bahnschrift', sans-serif;
+}
+
+.task-item p.completed {
+  color: #7ab584; /* Color pastel verde oscuro */
+}
+
+/* Ensure buttons are visible over background */
+.complete-button {
+  background-color: #8d6a9f; /* Botón en tono pastel púrpura oscuro */
+  color: #ffffff;
+}
+
+/* Error message */
+.error {
+  color: #e38b77; /* Rojo pastel suave para los errores */
+  text-align: center;
+}
+
+/* Media queries for responsive design */
+
+/* Mobile phones */
+@media (max-width: 600px) {
+  form {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .task-item {
+    padding: 15px;
+    margin: 8px 0;
+    flex: 1 1 100%; /* Una tarea por fila en móviles */
+  }
+
+  input, select, textarea, button {
+    width: 100%;
+    padding: 10px;
+    text-align: center; /* Centrar texto en los inputs */
+  }
+
+  button {
+    font-size: 14px;
+    padding: 10px 12px;
+    text-align: center; /* Centrar texto del botón */
+  }
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+  form {
+    padding: 25px;
+    max-width: 90%;
+  }
+
+  .task-item {
+    padding: 20px;
+    margin: 10px 0;
+    flex: 1 1 calc(50% - 30px); /* Dos tareas por fila en tablets */
+  }
+
+  input, select, textarea, button {
+    width: 100%;
+    padding: 12px;
+    text-align: center; /* Centrar texto en los inputs */
+  }
+
+  button {
+    font-size: 16px;
+    padding: 12px 15px;
+    text-align: center; /* Centrar texto del botón */
+  }
+}
+
+/* Larger screens (desktops) */
+@media (min-width: 1200px) {
+  form {
+    max-width: 600px;
+  }
+
+  .task-item {
+    padding: 25px;
+    margin: 15px 0;
+  }
+
+  input, select, textarea, button {
+    padding: 15px;
+    text-align: center; /* Centrar texto en los inputs */
+  }
+}
